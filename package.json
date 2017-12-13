@@ -29,5 +29,5 @@
     "start:build": "react-scripts build && serve -s build",
     "format:all": "prettier --single-quote --write 'src/**/*.{js,jsx}'"
   },
-  "homepage": "https://wrightm.github.io"
+  "homepage": "https://wrightm.github.io/my-site"
 }
