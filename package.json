@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "flow-bin": "^0.61.0",
     "gh-pages": "^1.1.0",
     "husky": "^0.14.3",
     "lint-staged": "^6.0.0",
@@ -10,6 +13,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.0.17",
+    "react-test-renderer": "^16.2.0",
     "serve": "^6.4.1"
   },
   "lint-staged": {
@@ -18,13 +22,32 @@
       "git add"
     ]
   },
+  "jest": {
+    "collectCoverageFrom" : [
+      "src/**/*.{js,jsx}",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/path/to/dir/",
+      "!src/index.js",
+      "!src/registerServiceWorker.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "coverageReporters": ["text"]
+  },
   "scripts": {
+    "flow": "flow",
     "precommit": "lint-staged",
     "predeploy": "npm run build",
     "deploy": "gh-pages -b master -d build",
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "build": "flow && react-scripts build",
+    "test": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
     "start:build": "react-scripts build && serve -s build",
     "format:all": "prettier --single-quote --write 'src/**/*.{js,jsx}'"
