@@ -16,7 +16,8 @@ class PaginatedDocument extends React.Component {
     this.state = {
       numPages: null,
       pageNumber: 1,
-      pageChunks: []
+      pageChunks: [],
+      isVisible: false
     };
     this.onDocumentLoad = this.onDocumentLoad.bind(this);
     this.previousPage = this.previousPage.bind(this);
@@ -29,7 +30,8 @@ class PaginatedDocument extends React.Component {
   onDocumentLoad = ({ numPages }) => {
     this.setState({
       numPages,
-      pageChunks: range(this.pagedChunks, numPages, this.pagedChunks)
+      pageChunks: range(this.pagedChunks, numPages, this.pagedChunks),
+      isVisible: true
     });
   };
 
@@ -104,7 +106,7 @@ class PaginatedDocument extends React.Component {
     );
     return (
       <div>
-        <p>
+        <p className={classNames({ 'd-none': !this.state.isVisible })}>
           Page {pageNumber} of {numPages}
         </p>
         <Document
@@ -119,7 +121,12 @@ class PaginatedDocument extends React.Component {
             renderTextLayer={false}
           />
         </Document>
-        <Pagination className="justify-content-center" size="sm">
+        <Pagination
+          className={classNames('justify-content-center', {
+            'd-none': !this.state.isVisible
+          })}
+          size="sm"
+        >
           <PaginationItem>
             <PaginationLink previous onClick={this.previousPage} href="#" />
           </PaginationItem>

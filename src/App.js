@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import siteUrl from './siteUrl';
 
 import Layout from './Layout';
-import AboutMe from './AboutMe';
-import CV from './CV';
-import Publications from './Publications';
-import Contact from './Contact';
-import NotFound from './NotFound';
+import { AboutMe, CV, Publications, Contact, NotFound } from './Routes';
 
 import './App.css';
 import './Animate.css';
@@ -16,7 +12,7 @@ import './Animate.css';
 class App extends Component {
   render() {
     return (
-      <Router>
+      <BrowserRouter>
         <Layout>
           <Switch>
             <Route exact path={siteUrl.HOME} component={AboutMe} />
@@ -27,7 +23,7 @@ class App extends Component {
             <Route path="**" component={NotFound} />
           </Switch>
         </Layout>
-      </Router>
+      </BrowserRouter>
     );
   }
 }
