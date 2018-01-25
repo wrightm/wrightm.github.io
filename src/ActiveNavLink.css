@@ -1,0 +1,13 @@
+.ActiveNavLink {
+  color: #ffffff;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  margin-top: 6px;
+  font-size: 18px;
+  border-left: 4px solid transparent;
+  transition-duration: 0.7s;
+}
+
+.ActiveNavLink:hover,
+.ActiveNavLink.active {
+  color: #16a085;
+}

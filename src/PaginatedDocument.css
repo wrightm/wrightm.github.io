@@ -1,0 +1,9 @@
+.PaginatedDocument {
+  margin-bottom: 25px;
+}
+
+.PaginatedDocument canvas {
+  display: inherit !important;
+  width: 100% !important;
+  height: 100% !important;
+}

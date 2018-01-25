@@ -1,0 +1,29 @@
+.SkillSummarySlideShow {
+  margin-bottom: 20px;
+}
+
+.SkillSummarySlideShow i {
+  color: #16a085;
+}
+
+.SkillSummarySlideShow .icon-first {
+  color: #ed5a64;
+}
+
+.verticle .carousel-item-next.carousel-item-left,
+.verticle .carousel-item-prev.carousel-item-right {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.verticle .carousel-item-next,
+.verticle .active.carousel-item-right {
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+}
+
+.verticle .carousel-item-prev,
+.verticle .active.carousel-item-left {
+  -webkit-transform: translate3d(0, -100%, 0);
+  transform: translate3d(0, -100%, 0);
+}

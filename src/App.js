@@ -1,19 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import siteUrl from './siteUrl';
+
+import Layout from './Layout';
+import AboutMe from './AboutMe';
+import CV from './CV';
+import Publications from './Publications';
+import Contact from './Contact';
+import NotFound from './NotFound';
+
 import './App.css';
+import './Animate.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Router>
+        <Layout>
+          <Switch>
+            <Route exact path={siteUrl.HOME} component={AboutMe} />
+            <Route exact path={siteUrl.ABOUT_ME} component={AboutMe} />
+            <Route exact path={siteUrl.CV} component={CV} />
+            <Route exact path={siteUrl.PUBLICATIONS} component={Publications} />
+            <Route exact path={siteUrl.CONTACT} component={Contact} />
+            <Route path="**" component={NotFound} />
+          </Switch>
+        </Layout>
+      </Router>
     );
   }
 }

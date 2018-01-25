@@ -1,0 +1,21 @@
+.Publication {
+  text-align: left;
+  text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+  .Publication {
+    margin-left: 20px;
+  }
+}
+
+.Publication:hover {
+  color: #2c3e50;
+  cursor: pointer;
+}
+
+.Publication .fa {
+  color: #2c3e50;
+  font-size: 22px;
+  padding-right: 22px;
+}

@@ -1,0 +1,29 @@
+.CV {
+  background-color: #1abc9c;
+  padding: 80px 0;
+  color: #ffffff;
+  border-top: 8px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+.CV-underline {
+  border-top: solid 5px;
+  color: #fff;
+  margin: 30px auto 50px;
+  max-width: 250px;
+}
+
+.CV-pdf {
+  margin-bottom: 25px;
+}
+
+.CV-pdf canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.CV-pagination a,
+.CV-pagination a:hover {
+  color: #1abc9c;
+}

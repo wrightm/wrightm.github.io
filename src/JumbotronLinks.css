@@ -1,0 +1,48 @@
+.JumbotronLinks ul {
+  display: inline-flex;
+  list-style-type: none;
+}
+
+.JumbotronLinks-btn {
+  font-family: 'Montserrat';
+  border: 1px solid #ffffff;
+  border-bottom: 3px solid #ffffff;
+  background-color: transparent;
+  color: #ffffff;
+  transition-duration: 0.4s;
+}
+
+.JumbotronLinks-btn-left {
+  margin-right: 15px;
+}
+
+.JumbotronLinks-btn:hover,
+.JumbotronLinks-btn:focus {
+  color: #16a085;
+  border: 1px solid #16a085;
+  border-bottom: 3px solid #16a085;
+}
+
+.JumbotronLinks-btn-right {
+  border: 1px solid #16a085;
+  border-bottom: 3px solid #16a085;
+  color: #16a085;
+}
+
+@media (max-width: 425px) {
+  .JumbotronLinks {
+    padding-top: 20px;
+  }
+
+  .JumbotronLinks li {
+    margin-bottom: 25px;
+  }
+
+  .JumbotronLinks ul {
+    display: block;
+  }
+
+  .JumbotronLinks-btn-left {
+    margin: 0;
+  }
+}
