@@ -64,11 +64,12 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -b master -d build",
     "start": "react-scripts start",
+    "start:build": "react-scripts build && serve -s build",
+    "start:prod": "serve -s build",
     "build": "flow && react-scripts build",
     "test": "react-scripts test --env=jsdom --coverage",
     "test:debug": "react-scripts --inspect-brk test --runInBand --env=jsdom",
     "eject": "react-scripts eject",
-    "start:build": "react-scripts build && serve -s build",
     "format:all": "prettier --single-quote --write 'src/**/*.{js,jsx}'"
   },
   "homepage": "https://wrightm.github.io"

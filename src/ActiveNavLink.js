@@ -31,7 +31,7 @@ class ActiveNavLink extends Component {
               to={this.href}
               children={this.children}
               className="ActiveNavLink"
-              active={!!match}
+              active={!!match || this.active}
             />
           );
         }}

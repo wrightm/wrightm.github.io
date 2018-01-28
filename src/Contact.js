@@ -19,43 +19,37 @@ import './Contact.css';
 import macbook from './images/macbook.png';
 
 class Contact extends React.Component {
-  static emailTemplate = 'mailto:wright1michael@gmail.com?subject=FromMyWebsite&&body=Test';
+  static NOT_DEFINED = 'NOT_DEFINED';
 
   constructor(props) {
     super(props);
-    this.validateFirstName = this.validateFirstName.bind(this);
-    this.setFirstName = this.setFirstName.bind(this);
-    this.validateLastName = this.validateLastName.bind(this);
-    this.setLastName = this.setLastName.bind(this);
-    this.validateEmail = this.validateEmail.bind(this);
-    this.setEmail = this.setEmail.bind(this);
+    this.validateSubject = this.validateSubject.bind(this);
+    this.setSubject = this.setSubject.bind(this);
     this.validateMessage = this.validateMessage.bind(this);
     this.setMessage = this.setMessage.bind(this);
-    this.sendEmail = this.sendEmail.bind(this);
+    this.emailTemplate = this.emailTemplate.bind(this);
     this.validate = this.validate.bind(this);
     this.setValue = this.setValue.bind(this);
     this.isFormValid = this.isFormValid.bind(this);
     this.state = {
       form: {
-        firstname: {
-          value: undefined,
-          isValid: undefined
-        },
-        lastname: {
-          value: undefined,
-          isValid: undefined
-        },
-        email: {
-          value: undefined,
-          isValid: undefined
+        subject: {
+          value: '',
+          isValid: Contact.NOT_DEFINED
         },
         message: {
-          value: undefined,
-          isValid: undefined
+          value: '',
+          isValid: Contact.NOT_DEFINED
         },
         isValid: false
       }
     };
+  }
+
+  emailTemplate() {
+    return `mailto:wright1michael@gmail.com?subject=${
+      this.state.form.subject.value
+    }&&body=${this.state.form.message.value}`;
   }
 
   validate(key, isValid) {
@@ -84,34 +78,12 @@ class Contact extends React.Component {
     });
   }
 
-  validateFirstName(event) {
-    this.validate('firstname', !!event.target.value);
+  validateSubject(event) {
+    this.validate('subject', !!event.target.value);
   }
 
-  setFirstName(event) {
-    this.setValue('firstname', event.target.value);
-  }
-
-  validateLastName(event) {
-    this.validate('lastname', !!event.target.value);
-  }
-
-  setLastName(event) {
-    this.setValue('lastname', event.target.value);
-  }
-
-  validateEmail(event) {
-    const email = event.target.value;
-    let validEmail = false;
-    if (email) {
-      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      validEmail = re.test(email.toLowerCase());
-    }
-    this.validate('email', validEmail);
-  }
-
-  setEmail(event) {
-    this.setValue('email', event.target.value);
+  setSubject(event) {
+    this.setValue('subject', event.target.value);
   }
 
   validateMessage(event) {
@@ -135,10 +107,6 @@ class Contact extends React.Component {
       }
     });
     return valid;
-  }
-
-  sendEmail(event) {
-    event.preventDefault();
   }
 
   render() {
@@ -167,44 +135,28 @@ class Contact extends React.Component {
                     <Form>
                       <FormGroup>
                         <Input
-                          valid={this.state.form.firstname.isValid}
+                          valid={
+                            this.state.form.subject.isValid ===
+                            Contact.NOT_DEFINED
+                              ? undefined
+                              : this.state.form.subject.isValid
+                          }
                           type="text"
-                          placeholder="First Name"
-                          value={this.state.form.firstname.value}
-                          onBlur={this.validateFirstName}
-                          onChange={this.setFirstName}
+                          placeholder="Subject"
+                          value={this.state.form.subject.value}
+                          onBlur={this.validateSubject}
+                          onChange={this.setSubject}
                         />
-                        <FormFeedback>
-                          Please provide your first name
-                        </FormFeedback>
+                        <FormFeedback>Please provide a subject</FormFeedback>
                       </FormGroup>
                       <FormGroup>
                         <Input
-                          valid={this.state.form.lastname.isValid}
-                          type="text"
-                          placeholder="Last Name"
-                          value={this.state.form.lastname.value}
-                          onBlur={this.validateLastName}
-                          onChange={this.setLastName}
-                        />
-                        <FormFeedback>
-                          Please provide your last name
-                        </FormFeedback>
-                      </FormGroup>
-                      <FormGroup>
-                        <Input
-                          valid={this.state.form.email.isValid}
-                          type="text"
-                          placeholder="Email"
-                          value={this.state.form.email.value}
-                          onBlur={this.validateEmail}
-                          onChange={this.setEmail}
-                        />
-                        <FormFeedback>Please provide your email</FormFeedback>
-                      </FormGroup>
-                      <FormGroup>
-                        <Input
-                          valid={this.state.form.message.isValid}
+                          valid={
+                            this.state.form.message.isValid ===
+                            Contact.NOT_DEFINED
+                              ? undefined
+                              : this.state.form.message.isValid
+                          }
                           type="textarea"
                           placeholder="Message"
                           value={this.state.form.message.value}
@@ -215,8 +167,7 @@ class Contact extends React.Component {
                       </FormGroup>
                       <a
                         className={sendEmailButtonClass}
-                        href={Contact.emailTemplate}
-                        onClick={this.sendEmail}
+                        href={this.emailTemplate()}
                       >
                         Send Message
                       </a>

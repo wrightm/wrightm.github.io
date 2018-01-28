@@ -37,7 +37,12 @@ class Navigation extends Component {
     });
     return (
       <Navbar className={navbarClasses} expand="md">
-        <NavbarBrand className="Navigation-navbar-brand" href="/">
+        <NavbarBrand
+          className="Navigation-navbar-brand"
+          tag={ActiveNavLink}
+          active={true}
+          href={siteUrl.ABOUT_ME}
+        >
           <img src={myAvatar} className="Navigation-logo" alt="Mike Wright" />
           {message.BARND_TITLE}
         </NavbarBrand>
