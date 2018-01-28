@@ -5,12 +5,11 @@ import TimeLine from './twitter_widget/Timeline';
 class Tweets extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { width: 0 };
+    this.state = { width: window.innerWidth ? window.innerWidth : 0 };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   componentDidMount() {
-    this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
   }
 
