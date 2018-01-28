@@ -99,20 +99,6 @@
 
 @media (max-width: 480px) {
   .TimeLine {
-    margin: 25px 0 0 210px;
-  }
-
-  .TimeLine-info {
-    width: 200px;
-  }
-
-  .TimeLine-date {
-    margin-left: 125px;
-  }
-}
-
-@media (max-width: 320px) {
-  .TimeLine {
     margin: 25px 0 0 110px;
   }
 
