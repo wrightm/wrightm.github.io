@@ -24,8 +24,7 @@ class Tweets extends React.Component {
 
   getTimelineHeight() {
     const currentWidth = this.state.width;
-
-    if (currentWidth === 0 || currentWidth > 768) {
+    if (currentWidth > 768) {
       return 700;
     } else {
       return 500;

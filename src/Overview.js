@@ -17,7 +17,7 @@ const Overview = props => {
     <section className="Overview">
       <Container>
         <Row>
-          <Col sm="2" className="active animated fadeInLeft">
+          <Col sm="2" className="active animated fadeInLeft d-none d-sm-block">
             <img src={myAvatar} className="Overview-img" alt="Mike Wright" />
           </Col>
           <Col sm="6" md="7" className="active animated fadeInLeft">
