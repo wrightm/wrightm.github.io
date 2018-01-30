@@ -1,7 +1,5 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 import classNames from 'classnames';
-
 import {
   Container,
   Row,
@@ -11,8 +9,9 @@ import {
   Input,
   FormFeedback
 } from 'reactstrap';
-
 import { get, forOwn } from 'lodash';
+
+import SEO from './SEO';
 
 import './Contact.css';
 
@@ -117,7 +116,13 @@ class Contact extends React.Component {
 
     return (
       <div className="Contact">
-        <Helmet title="Contact" />
+        <SEO
+          schema="ContactPage"
+          title="Contact Me"
+          description="Contact Michael Wright directly for software consulting or to hire him."
+          contentType="website"
+          image="contact"
+        />
         <Container>
           <h2 className="active animated fadeInDown">Contact me</h2>
           <Row>

@@ -1,5 +1,4 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 import { Document, Page } from 'react-pdf/build/entry.webpack';
 import {
   Container,
@@ -11,6 +10,7 @@ import {
 import { range } from 'lodash';
 
 import message from './message';
+import SEO from './SEO';
 
 import './CV.css';
 
@@ -73,7 +73,13 @@ class CV extends React.Component {
 
     return (
       <div className="CV">
-        <Helmet title="CV" />
+        <SEO
+          schema="Article"
+          title="CV"
+          description="Michael Wright's Curriculum Vitae. Contact Michael Wright if you would like to work with him."
+          contentType="website"
+          image="cv"
+        />
         <Container>
           <h2>Curriculum Vitae</h2>
           <hr className="CV-underline" />

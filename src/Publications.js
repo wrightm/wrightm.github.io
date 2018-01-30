@@ -1,9 +1,9 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 
 import { Container, Row } from 'reactstrap';
 
 import Publication from './Publication';
+import SEO from './SEO';
 
 import './Publications.css';
 
@@ -70,7 +70,13 @@ class Publications extends React.Component {
     const publications = this.createPublications();
     return (
       <div className="Publications">
-        <Helmet title="Publications" />
+        <SEO
+          schema="Article"
+          title="Publications"
+          description="Michael Wright's publications, including his PhD in Particle Physics"
+          contentType="website"
+          image="publications"
+        />
         <Container>
           <h2>Publications</h2>
           <hr className="Publications-underline" />
