@@ -1,5 +1,4 @@
 import React from 'react';
-
 import SEO from './SEO';
 import Overview from './Overview';
 import PlacesWorked from './PlacesWorked';

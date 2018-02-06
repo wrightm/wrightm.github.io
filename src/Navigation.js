@@ -9,6 +9,9 @@ import {
   NavItem
 } from 'reactstrap';
 
+import TrackedAction from './TrackedAction';
+import { CATEGORY, LABEL, ACTION } from './GAOptions';
+
 import ActiveNavLink from './ActiveNavLink';
 import message from './message';
 import siteUrl from './siteUrl';
@@ -37,31 +40,67 @@ class Navigation extends Component {
     });
     return (
       <Navbar className={navbarClasses} expand="md">
-        <NavbarBrand
-          className="Navigation-navbar-brand"
-          tag={ActiveNavLink}
-          active={true}
-          href={siteUrl.ABOUT_ME}
+        <TrackedAction
+          gaCategory={CATEGORY.NAVIGATION}
+          gaAction={ACTION.CLICK}
+          gaLabel={LABEL.NAV_BAR_BRAND}
         >
-          <img src={myAvatar} className="Navigation-logo" alt="Mike Wright" />
-          {message.BARND_TITLE}
-        </NavbarBrand>
+          <NavbarBrand
+            className="Navigation-navbar-brand"
+            tag={ActiveNavLink}
+            active={true}
+            href={siteUrl.ABOUT_ME}
+          >
+            <img src={myAvatar} className="Navigation-logo" alt="Mike Wright" />
+            {message.BARND_TITLE}
+          </NavbarBrand>
+        </TrackedAction>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <ActiveNavLink href={siteUrl.ABOUT_ME}>About Me</ActiveNavLink>
+              <TrackedAction
+                gaCategory={CATEGORY.NAVIGATION}
+                gaAction={ACTION.CLICK}
+                gaLabel={LABEL.NAV_BAR_ABOUT_ME}
+                href={siteUrl.ABOUT_ME}
+                tag={ActiveNavLink}
+              >
+                About Me
+              </TrackedAction>
             </NavItem>
             <NavItem>
-              <ActiveNavLink href={siteUrl.CV}>CV</ActiveNavLink>
+              <TrackedAction
+                gaCategory={CATEGORY.NAVIGATION}
+                gaAction={ACTION.CLICK}
+                gaLabel={LABEL.NAV_BAR_ABOUT_CV}
+                href={siteUrl.CV}
+                tag={ActiveNavLink}
+              >
+                CV
+              </TrackedAction>
             </NavItem>
             <NavItem>
-              <ActiveNavLink href={siteUrl.PUBLICATIONS}>
+              <TrackedAction
+                gaCategory={CATEGORY.NAVIGATION}
+                gaAction={ACTION.CLICK}
+                gaLabel={LABEL.NAV_BAR_PUBLICATIONS}
+                href={siteUrl.PUBLICATIONS}
+                tag={ActiveNavLink}
+              >
                 Publications
-              </ActiveNavLink>
+              </TrackedAction>
             </NavItem>
             <NavItem>
-              <ActiveNavLink href={siteUrl.CONTACT}>Contact</ActiveNavLink>
+              <TrackedAction
+                gaCategory={CATEGORY.NAVIGATION}
+                gaAction={ACTION.CLICK}
+                gaLabel={LABEL.NAV_BAR_CONTACT}
+                href={siteUrl.CONTACT}
+                tag={ActiveNavLink}
+              >
+                Contact
+              </TrackedAction>
             </NavItem>
           </Nav>
         </Collapse>

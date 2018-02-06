@@ -3,8 +3,6 @@ import isEqual from 'lodash/isEqual';
 import cloneDeep from 'lodash/cloneDeep';
 import AbstractWidget from './AbstractWidget';
 
-import './Timeline.css';
-
 class Timeline extends React.Component {
   shouldComponentUpdate(nextProps) {
     const changed = name => !isEqual(this.props[name], nextProps[name]);

@@ -27,7 +27,7 @@ class Publication extends React.Component {
       { 'fa-caret-right': !this.state.collapse }
     );
     return (
-      <div>
+      <div style={{ width: '100%' }}>
         <div className="Publication" onClick={this.toggle}>
           {' '}
           <i className={caretClass} aria-hidden={!this.state.collapse} />

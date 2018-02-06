@@ -32,6 +32,7 @@ class ActiveNavLink extends Component {
               children={this.children}
               className="ActiveNavLink"
               active={!!match || this.active}
+              onClick={this.props.onClick}
             />
           );
         }}

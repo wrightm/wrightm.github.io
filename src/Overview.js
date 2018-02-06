@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { Container, Row, Col } from 'reactstrap';
 
+import TrackedAction from './TrackedAction';
+import { CATEGORY, LABEL, ACTION } from './GAOptions';
 import siteUrl from './siteUrl';
 
 import TimeLine from './TimeLine';
@@ -30,7 +32,17 @@ const Overview = props => {
               successful start ups. I enjoy building and designing websites from
               the ground up or improving existing code bases. If your looking
               for a contract Software Engineer or needing a bespoke website
-              built <Link to={siteUrl.CONTACT}>get in touch</Link>.
+              built
+              <TrackedAction
+                gaCategory={CATEGORY.NAVIGATION}
+                gaAction={ACTION.CLICK}
+                gaLabel={LABEL.ABOUT_ME_OVERVIEW_CONTACT}
+                tag={Link}
+                to={siteUrl.CONTACT}
+              >
+                {' '}
+                get in touch
+              </TrackedAction>.
             </p>
             <Tweets />
           </Col>

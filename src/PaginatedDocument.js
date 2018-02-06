@@ -3,6 +3,10 @@ import { Document, Page } from 'react-pdf/build/entry.webpack';
 import classNames from 'classnames';
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import { range, find } from 'lodash';
+import ReactGA from 'react-ga';
+
+import Spinner from './Spinner';
+import { CATEGORY, ACTION } from './GAOptions';
 
 import './PaginatedDocument.css';
 
@@ -11,7 +15,6 @@ class PaginatedDocument extends React.Component {
     super(props);
     this.file = props.file;
     this.className = props.className;
-    this.loadingMessage = !!props.loading ? props.loading : 'Loading...';
     this.pagedChunks = !!props.pagedChunks ? props.pagedChunks : 5;
     this.state = {
       numPages: null,
@@ -27,10 +30,22 @@ class PaginatedDocument extends React.Component {
     this.createPaginationPages = this.createPaginationPages.bind(this);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const eventLabel = `PAGE_${this.state.pageNumber}`;
+    ReactGA.event({
+      category: CATEGORY.VIEW_DOCUMENT,
+      action: ACTION.CLICK,
+      label: eventLabel
+    });
+  }
+
   onDocumentLoad = ({ numPages }) => {
+    this.pagedChunks =
+      this.pagedChunks >= numPages ? numPages : this.pagedChunks;
+    const pageChunks = range(0, numPages, this.pagedChunks);
     this.setState({
       numPages,
-      pageChunks: range(this.pagedChunks, numPages, this.pagedChunks),
+      pageChunks,
       isVisible: true
     });
   };
@@ -40,6 +55,8 @@ class PaginatedDocument extends React.Component {
     const { pageNumber } = this.state;
     if (pageNumber > 1) {
       this.setState({ pageNumber: pageNumber - 1 });
+    } else {
+      this.setState({ pageNumber: 1 });
     }
   };
 
@@ -48,6 +65,8 @@ class PaginatedDocument extends React.Component {
     const { pageNumber, numPages } = this.state;
     if (pageNumber < numPages) {
       this.setState({ pageNumber: pageNumber + 1 });
+    } else {
+      this.setState({ pageNumber: numPages });
     }
   };
 
@@ -77,7 +96,7 @@ class PaginatedDocument extends React.Component {
     } else {
       const startPageNumber = pageChunks[pageChunks.length - 1];
       return {
-        start: startPageNumber,
+        start: startPageNumber ? startPageNumber : 1,
         end: numPages + 1
       };
     }
@@ -104,6 +123,7 @@ class PaginatedDocument extends React.Component {
       'justify-content-center',
       { [this.className]: !!this.className }
     );
+
     return (
       <div>
         <p className={classNames({ 'd-none': !this.state.isVisible })}>
@@ -113,7 +133,7 @@ class PaginatedDocument extends React.Component {
           className={documentClass}
           file={this.file}
           onLoadSuccess={this.onDocumentLoad}
-          loading={this.loadingMessage}
+          loading={<Spinner />}
         >
           <Page
             pageNumber={pageNumber}

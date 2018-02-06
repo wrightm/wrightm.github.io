@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import siteUrl from './siteUrl';
 import serviceUrl from './serviceUrl';
 import message from './message';
+import TrackedAction from './TrackedAction';
+import { CATEGORY, LABEL, ACTION } from './GAOptions';
 
 import './Footer.css';
 import './Animate.css';
@@ -17,52 +19,75 @@ const Footer = props => {
           <Col className="text-center animated fadeInDown">
             <ul className="brands brands-inline">
               <li>
-                <a
+                <TrackedAction
+                  gaCategory={CATEGORY.NAVIGATION}
+                  gaAction={ACTION.CLICK}
+                  gaLabel={LABEL.FOOTER_GITHUB}
+                  tag="a"
                   href={serviceUrl.GITHUB_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <i className="fa fa-github" />
-                </a>
+                </TrackedAction>
               </li>
               <li>
-                <a
+                <TrackedAction
+                  gaCategory={CATEGORY.NAVIGATION}
+                  gaAction={ACTION.CLICK}
+                  gaLabel={LABEL.FOOTER_TWITTER}
+                  tag="a"
                   href={serviceUrl.TWITTER_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <i className="fa fa-twitter" />
-                </a>
+                </TrackedAction>
               </li>
               <li>
-                <a
+                <TrackedAction
+                  gaCategory={CATEGORY.NAVIGATION}
+                  gaAction={ACTION.CLICK}
+                  gaLabel={LABEL.FOOTER_GOOGLEPLUS}
+                  tag="a"
                   href={serviceUrl.GOOGLE_PLUS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <i className="fa fa-google-plus" />
-                </a>
+                </TrackedAction>
               </li>
               <li>
-                <a
+                <TrackedAction
+                  gaCategory={CATEGORY.NAVIGATION}
+                  gaAction={ACTION.CLICK}
+                  gaLabel={LABEL.FOOTER_LINKEDIN}
+                  tag="a"
                   href={serviceUrl.LINKEDIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <i className="fa fa-linkedin" />
-                </a>
+                </TrackedAction>
               </li>
             </ul>
 
             <p>
               © Michael Wright 2018 All right reserved. Designed by{' '}
-              <Button
-                tag={Link}
-                to={siteUrl.ABOUT_ME}
-                className="Footer-btn-footer"
+              <TrackedAction
+                gaCategory={CATEGORY.NAVIGATION}
+                gaAction={ACTION.CLICK}
+                gaLabel={LABEL.FOOTER_COPYWRITE_BUTTON}
+                tag="span"
               >
-                {message.BARND_TITLE}
-              </Button>
+                <Button
+                  tag={Link}
+                  to={siteUrl.ABOUT_ME}
+                  className="Footer-btn-footer"
+                >
+                  {message.BARND_TITLE}
+                </Button>
+              </TrackedAction>
             </p>
           </Col>
         </Row>

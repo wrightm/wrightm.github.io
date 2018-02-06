@@ -12,6 +12,8 @@ import {
 import { get, forOwn } from 'lodash';
 
 import SEO from './SEO';
+import TrackedAction from './TrackedAction';
+import { CATEGORY, ACTION, LABEL } from './GAOptions';
 
 import './Contact.css';
 
@@ -22,12 +24,9 @@ class Contact extends React.Component {
 
   constructor(props) {
     super(props);
-    this.validateSubject = this.validateSubject.bind(this);
     this.setSubject = this.setSubject.bind(this);
-    this.validateMessage = this.validateMessage.bind(this);
     this.setMessage = this.setMessage.bind(this);
     this.emailTemplate = this.emailTemplate.bind(this);
-    this.validate = this.validate.bind(this);
     this.setValue = this.setValue.bind(this);
     this.isFormValid = this.isFormValid.bind(this);
     this.state = {
@@ -51,61 +50,40 @@ class Contact extends React.Component {
     }&&body=${this.state.form.message.value}`;
   }
 
-  validate(key, isValid) {
-    const formKeyValue = get(this.state.form, key + '.value');
+  setValue(key, value, isValid) {
     this.setState({
       form: {
         ...this.state.form,
         [key]: {
-          value: formKeyValue,
-          isValid: isValid
+          value,
+          isValid
         },
         isValid: this.isFormValid(key, isValid)
       }
     });
   }
 
-  setValue(key, value) {
-    this.setState({
-      form: {
-        ...this.state.form,
-        [key]: {
-          value,
-          isValid: get(this.state.form, key + '.isValid')
-        }
-      }
-    });
-  }
-
-  validateSubject(event) {
-    this.validate('subject', !!event.target.value);
-  }
-
   setSubject(event) {
-    this.setValue('subject', event.target.value);
-  }
-
-  validateMessage(event) {
-    this.validate('message', !!event.target.value);
+    this.setValue('subject', event.target.value, !!event.target.value);
   }
 
   setMessage(event) {
-    this.setValue('message', event.target.value);
+    this.setValue('message', event.target.value, !!event.target.value);
   }
 
-  isFormValid(validatedKey, isValidatedKeyValid) {
-    let valid = true;
+  isFormValid(currentKey, currentKeyIsValid) {
+    let isValid = true;
     forOwn(this.state.form, (value, key) => {
       if (key === 'isValid') {
         return;
       }
-      if (validatedKey === key) {
-        valid = valid & isValidatedKeyValid;
+      if (currentKey === key) {
+        isValid = isValid & currentKeyIsValid;
       } else {
-        valid = valid & get(value, 'isValid');
+        isValid = isValid & get(value, 'isValid');
       }
     });
-    return valid;
+    return isValid;
   }
 
   render() {
@@ -147,9 +125,8 @@ class Contact extends React.Component {
                               : this.state.form.subject.isValid
                           }
                           type="text"
-                          placeholder="Subject"
+                          placeholder="Subject: required"
                           value={this.state.form.subject.value}
-                          onBlur={this.validateSubject}
                           onChange={this.setSubject}
                         />
                         <FormFeedback>Please provide a subject</FormFeedback>
@@ -163,19 +140,22 @@ class Contact extends React.Component {
                               : this.state.form.message.isValid
                           }
                           type="textarea"
-                          placeholder="Message"
+                          placeholder="Message: required"
                           value={this.state.form.message.value}
-                          onBlur={this.validateMessage}
                           onChange={this.setMessage}
                         />
                         <FormFeedback>Please provide a message</FormFeedback>
                       </FormGroup>
-                      <a
+                      <TrackedAction
+                        gaCategory={CATEGORY.USER}
+                        gaAction={ACTION.CLICK}
+                        gaLabel={LABEL.SEND_CONTACT_MESSAGE}
                         className={sendEmailButtonClass}
                         href={this.emailTemplate()}
+                        tag="a"
                       >
                         Send Message
-                      </a>
+                      </TrackedAction>
                     </Form>
                   </Col>
                   <Col sm="1" className="d-none d-sm-block" />
@@ -190,3 +170,11 @@ class Contact extends React.Component {
 }
 
 export default Contact;
+
+/*<a
+    className={sendEmailButtonClass}
+    href={this.emailTemplate()}
+>
+  Send Message
+</a>
+*/

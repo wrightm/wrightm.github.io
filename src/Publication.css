@@ -1,6 +1,7 @@
 .Publication {
   text-align: left;
   text-decoration: underline;
+  margin-bottom: 25px;
 }
 
 @media (max-width: 767px) {
