@@ -74,5 +74,5 @@
     "eject": "react-scripts eject",
     "format:all": "prettier --single-quote --write 'src/**/*.{js,jsx}'"
   },
-  "homepage": "http://drmike.dev"
+  "homepage": "https://drmike.dev"
 }
