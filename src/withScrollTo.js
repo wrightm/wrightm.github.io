@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 export default function withScrollTo(WrappedComponent) {
   const HOC = class extends Component {
     componentDidMount() {
-      this.node.scrollIntoView();
+      if (this.node) {
+        this.node.scrollIntoView();
+      }
     }
 
     render() {

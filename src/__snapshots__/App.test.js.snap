@@ -2,30 +2,378 @@
 
 exports[`renders without crashing 1`] = `
 <div
-  className="App"
+  className="wrapper"
 >
   <header
-    className="App-header"
+    className="Header"
   >
-    <img
-      alt="logo"
-      className="App-logo"
-      src="logo.svg"
-    />
-    <h1
-      className="App-title"
+    <nav
+      className="Navigation-navbar navbar navbar-expand-md"
     >
-      Welcome to React
-    </h1>
+      <div
+        onClick={[Function]}
+      >
+        <a
+          className="ActiveNavLink nav-link active"
+          href="/about-me"
+          onClick={[Function]}
+        >
+          <img
+            alt="Mike Wright"
+            className="Navigation-logo"
+            src="me.png"
+          />
+          WrightM
+        </a>
+      </div>
+      <button
+        className="navbar-toggler"
+        onClick={[Function]}
+        type="button"
+      >
+        <span
+          className="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        className="collapse navbar-collapse"
+        style={Object {}}
+      >
+        <ul
+          className="ml-auto navbar-nav"
+        >
+          <li
+            className="nav-item"
+          >
+            <a
+              className="ActiveNavLink nav-link"
+              href="/about-me"
+              onClick={[Function]}
+            >
+              About Me
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="ActiveNavLink nav-link"
+              href="/cv"
+              onClick={[Function]}
+            >
+              CV
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="ActiveNavLink nav-link"
+              href="/publications"
+              onClick={[Function]}
+            >
+              Publications
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="ActiveNavLink nav-link"
+              href="/contact"
+              onClick={[Function]}
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div
+      className="Jumbotron jumbotron"
+    >
+      <img
+        alt="Mike Wright"
+        className="Jumbotron-image Jumbotron-image-animated Jumbotron-image-fadeInDown"
+        height="200"
+        src="me.png"
+        width="200"
+      />
+      <div
+        className="SocialHeading"
+      >
+        <ul
+          className="SocialHeading-brands hidden-xs animated fadeInLeft"
+        >
+          <li>
+            <a
+              href="https://github.com/wrightm"
+              onClick={[Function]}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <i
+                className="fa fa-github"
+              />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://twitter.com/wright1michael1"
+              onClick={[Function]}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <i
+                className="fa fa-twitter"
+              />
+            </a>
+          </li>
+        </ul>
+        <h2
+          className="animated fadeInDown"
+        >
+          Michael Wright
+        </h2>
+        <ul
+          className="SocialHeading-brands hidden-xs animated fadeInRight"
+        >
+          <li>
+            <a
+              href="https://plus.google.com/108010715419960249720"
+              onClick={[Function]}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <i
+                className="fa fa-google-plus"
+              />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/drmwright"
+              onClick={[Function]}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <i
+                className="fa fa-linkedin"
+              />
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="SkillSummarySlideShow verticle active animated fadeInDown carousel slide"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <div
+          className="carousel-inner"
+          role="listbox"
+        >
+          <div
+            className="carousel-item active"
+          >
+            <img
+              alt={undefined}
+              className="d-block img-fluid"
+              src={undefined}
+            />
+            <div
+              className="item"
+            >
+              <h3>
+                I 
+                <i
+                  className="fa fa-heart icon-first"
+                />
+                 Learning
+              </h3>
+            </div>
+          </div>
+          <div
+            className="carousel-item"
+          >
+            <img
+              alt={undefined}
+              className="d-block img-fluid"
+              src={undefined}
+            />
+            <div
+              className="item"
+            >
+              <h3>
+                Software Engineer 
+                <i
+                  className="fa fa-code icon"
+                />
+              </h3>
+            </div>
+          </div>
+          <div
+            className="carousel-item"
+          >
+            <img
+              alt={undefined}
+              className="d-block img-fluid"
+              src={undefined}
+            />
+            <div
+              className="item"
+            >
+              <h3>
+                <i
+                  className="fa fa-desktop"
+                />
+                 Web Design
+              </h3>
+            </div>
+          </div>
+          <div
+            className="carousel-item"
+          >
+            <img
+              alt={undefined}
+              className="d-block img-fluid"
+              src={undefined}
+            />
+            <div
+              className="item"
+            >
+              <h3>
+                <i
+                  className="fa fa-trophy"
+                />
+                 PhD In Physics
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="JumbotronLinks"
+      >
+        <ul>
+          <li>
+            <a
+              className="JumbotronLinks-btn JumbotronLinks-btn-left btn-lg active animated fadeInLeft"
+              href="/about-me"
+              onClick={[Function]}
+              role="button"
+            >
+              <i
+                className="fa fa-smile-o"
+              />
+               Get to know me
+            </a>
+          </li>
+          <li>
+            <a
+              className="JumbotronLinks-btn JumbotronLinks-btn-right btn-lg active animated fadeInRight"
+              href="/contact"
+              onClick={[Function]}
+              role="button"
+            >
+              <i
+                className="fa fa-bolt"
+              />
+               Hire me
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </header>
-  <p
-    className="App-intro"
+  <div>
+    <div>
+      Loading...
+    </div>
+  </div>
+  <div
+    className="Footer"
   >
-    To get started, edit 
-    <code>
-      src/App.js
-    </code>
-     and save to reload.
-  </p>
+    <div
+      className="container"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="text-center animated fadeInDown col"
+        >
+          <ul
+            className="brands brands-inline"
+          >
+            <li>
+              <a
+                href="https://github.com/wrightm"
+                onClick={[Function]}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <i
+                  className="fa fa-github"
+                />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://twitter.com/wright1michael1"
+                onClick={[Function]}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <i
+                  className="fa fa-twitter"
+                />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://plus.google.com/108010715419960249720"
+                onClick={[Function]}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <i
+                  className="fa fa-google-plus"
+                />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/drmwright"
+                onClick={[Function]}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <i
+                  className="fa fa-linkedin"
+                />
+              </a>
+            </li>
+          </ul>
+          <p>
+            © Michael Wright 2018 All right reserved. Designed by
+             
+            <span
+              onClick={[Function]}
+            >
+              <a
+                className="Footer-btn-footer btn btn-secondary"
+                href="/about-me"
+                onClick={[Function]}
+                type={undefined}
+              >
+                WrightM
+              </a>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;
